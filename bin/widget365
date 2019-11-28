@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'widgets365'
+
+default_log_file = 'data/365_widget.log'
+
+puts 'Using default log file at ' + default_log_file if ARGV[0].nil?
+ARGV[0] = default_log_file if ARGV[0].nil?
+
+evaluator = Widgets365::SensorEvaluator.new(ARGV[0])
+puts evaluator.evaluate_devices
+
+# IRB.start(__FILE__)
